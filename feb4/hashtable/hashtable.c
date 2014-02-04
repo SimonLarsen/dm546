@@ -9,18 +9,23 @@ int hash(hash_table *table, int key) {
 }
 
 hash_table *create_hash_table(int size) {
+	// Allocate hash_table structure
 	hash_table *table = malloc(sizeof(hash_table));
-	memset(table, 0, sizeof(hash_table));
 
+	// Set hash_table size
 	table->size = size;
+	// Allocate array of values
 	table->values = malloc(sizeof(int)*size);
+	// Set all values to zero
 	memset(table->values, 0, sizeof(int)*size);
 
 	return table;
 }
 
 void delete_hash_table(hash_table *table) {
+	// Free inner members first!
 	free(table->values);
+	// Then structure itself
 	free(table);
 }
 
