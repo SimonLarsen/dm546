@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -std=c99 -Wall -Wextra -pedantic -m32 -ggdb
+CFLAGS = -std=c99 -Wall -Wextra -pedantic -m32
 LDLIBS = -lfl
 
 OBJECTS = y.tab.o lex.yy.o main.o tree.o pretty.o memory.o
