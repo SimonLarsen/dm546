@@ -1,0 +1,163 @@
+State 9 conflicts: 1 shift/reduce
+State 11 conflicts: 1 shift/reduce
+State 12 conflicts: 1 shift/reduce
+
+
+Grammar
+
+    0 $accept: S $end
+
+    1 S: E
+
+    2 E: "while" E "do" E
+    3  | id ":=" E
+    4  | E '+' E
+    5  | id
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+'+' (43) 4
+error (256)
+id (258) 3 5
+"while" (259) 2
+"do" (260) 2
+":=" (261) 3
+
+
+Nonterminals, with rules where they appear
+
+$accept (8)
+    on left: 0
+S (9)
+    on left: 1, on right: 0
+E (10)
+    on left: 2 3 4 5, on right: 1 2 3 4
+
+
+State 0
+
+    0 $accept: . S $end
+
+    id       shift, and go to state 1
+    "while"  shift, and go to state 2
+
+    S  go to state 3
+    E  go to state 4
+
+
+State 1
+
+    3 E: id . ":=" E
+    5  | id .
+
+    ":="  shift, and go to state 5
+
+    $default  reduce using rule 5 (E)
+
+
+State 2
+
+    2 E: "while" . E "do" E
+
+    id       shift, and go to state 1
+    "while"  shift, and go to state 2
+
+    E  go to state 6
+
+
+State 3
+
+    0 $accept: S . $end
+
+    $end  shift, and go to state 7
+
+
+State 4
+
+    1 S: E .
+    4 E: E . '+' E
+
+    '+'  shift, and go to state 8
+
+    $default  reduce using rule 1 (S)
+
+
+State 5
+
+    3 E: id ":=" . E
+
+    id       shift, and go to state 1
+    "while"  shift, and go to state 2
+
+    E  go to state 9
+
+
+State 6
+
+    2 E: "while" E . "do" E
+    4  | E . '+' E
+
+    "do"  shift, and go to state 10
+    '+'   shift, and go to state 8
+
+
+State 7
+
+    0 $accept: S $end .
+
+    $default  accept
+
+
+State 8
+
+    4 E: E '+' . E
+
+    id       shift, and go to state 1
+    "while"  shift, and go to state 2
+
+    E  go to state 11
+
+
+State 9
+
+    3 E: id ":=" E .
+    4  | E . '+' E
+
+    '+'  shift, and go to state 8
+
+    '+'       [reduce using rule 3 (E)]
+    $default  reduce using rule 3 (E)
+
+
+State 10
+
+    2 E: "while" E "do" . E
+
+    id       shift, and go to state 1
+    "while"  shift, and go to state 2
+
+    E  go to state 12
+
+
+State 11
+
+    4 E: E . '+' E
+    4  | E '+' E .
+
+    '+'  shift, and go to state 8
+
+    '+'       [reduce using rule 4 (E)]
+    $default  reduce using rule 4 (E)
+
+
+State 12
+
+    2 E: "while" E "do" E .
+    4  | E . '+' E
+
+    '+'  shift, and go to state 8
+
+    '+'       [reduce using rule 2 (E)]
+    $default  reduce using rule 2 (E)
