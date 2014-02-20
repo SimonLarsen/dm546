@@ -1,2 +1,2 @@
 factorial: factorial.s
-	gcc -o $@ $^
+	gcc -o $@ $^ -m32

@@ -1,2 +1,2 @@
 debug: debug.s
-	gcc -o $@ $^
+	gcc -o $@ $^ -m32

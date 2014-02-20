@@ -1,2 +1,2 @@
 sel: sel.s
-	gcc -o $@ $^
+	gcc -o $@ $^ -m32
