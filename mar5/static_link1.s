@@ -1,5 +1,4 @@
-# Implementation of the following program
-# using static link
+# Implementation of the following program using static link
 #
 # var x:int;
 #
